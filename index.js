@@ -52,33 +52,16 @@ async function poolPicker(pool) {
 
 //Function for fetching pool url api.
 async function norpoolStats() {
-    let address = await addressPrompt()
+    let address = await addressPrompt();
     const response = await fetch('https://norpool.org/api/stats_address?address=' + address);
     const data = await response.json();
-    console.log((data.stats['hashrate'] / 1000) + 'KH/s');
-}
+    let workers = data.workers;
 
-async function swepoolStats() {
-    let address = await addressPrompt()
-    const response = await fetch('https://swepool.org/api/stats_address?address=' + address);
-    const data = await response.json();
-    console.log((data.stats['hashrate'] / 1000) + 'KH/s');
+    console.log('NorPool worker stats for ' + address);
+    for (workers in data.workers) {
+        console.log(data.workers);
+    }
 }
-
-async function gamersnestStats() {
-    let address = await addressPrompt()
-    const response = await fetch('https://https://pool.gamersnest.org/api/stats_address?address=' + address);
-    const data = await response.json();
-    console.log((data.stats['hashrate'] / 1000) + 'KH/s');
-}
-
-async function götaStats() {
-    let address = await addressPrompt()
-    const response = await fetch('https://https://pool.kryptokrona.se/api/stats_address?address=' + address);
-    const data = await response.json();
-    console.log((data.stats['hashrate'] / 1000) + 'KH/s');
-}
-
 
 async function main() {
     getPool();
