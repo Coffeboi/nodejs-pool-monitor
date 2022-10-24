@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "colors": "^1.4.0",
     "node-fetch": "^3.2.10",
     "prompt-sync": "^4.2.0",
     "prompt-sync-history": "^1.0.1"

@@ -1,7 +1,9 @@
 #! /usr/bin/env node
 
+import colors from 'colors';
 import fetch from 'node-fetch';
 import promptSync from 'prompt-sync';
+colors.enable();
 const prompt = promptSync(); ({ sigint: true });
 
 //Clears the console
@@ -58,8 +60,10 @@ async function norpoolStats() {
     let workers = data.workers;
 
     console.log('NorPool worker stats for ' + address);
-    for (workers in data.workers) {
-        console.log(data.workers);
+    for (const worker in data.workers) {
+        console.log('name: '.green + (data.workers[worker]["name"]));
+        console.log('hashrate: '.yellow + ((data.workers[worker]["hashrate"] / 1000) + 'KH/s'));
+        console.log('--------------------'.red);
     }
 }
 
